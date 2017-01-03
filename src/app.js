@@ -28,8 +28,8 @@ $(function() {
   new Overlay();
   new Range();
 
-  queryVal = decodeURI(lib.getQuery().val);
-  if (queryVal) {
+  if (location.search) {
+    queryVal = decodeURI(lib.getQuery().val);
     fetchImage = "https://api.pinterest.com/v1/boards/" + queryVal + "/pins/?access_token=" + TOKEN + "&fields=image";
     fetchCount = "https://api.pinterest.com/v1/boards/" + queryVal + "/?access_token=" + TOKEN + "&fields=counts";
   }
@@ -67,7 +67,7 @@ function getPins(url,count) {
         res.data.forEach(elm => {
           $pins.append('<img src="' + elm.image.original.url + '" class="item">');
           pinsNum++;
-          $loadStatus.text(Math.ceil(pinsNum / totalNum * 100) + "%");
+          $loadStatus.text(Math.floor(pinsNum / totalNum * 100) + "%");
         });
         getPins(res.page.next);
       });
