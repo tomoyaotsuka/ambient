@@ -1,0 +1,15 @@
+{
+  "use": [
+    "postcss-custom-properties",
+    "postcss-import",
+    "postcss-mixins",
+    "postcss-nested",
+    "autoprefixer",
+    "cssnano"
+  ],
+  "input": "src/app.css",
+  "output": "bundle.css",
+  "autoprefixer": {
+    "browsers": "last 2 versions"
+  }
+}

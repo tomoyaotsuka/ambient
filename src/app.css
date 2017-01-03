@@ -1,0 +1,276 @@
+@charset "UTF-8";
+
+/*--------------------------------------------------------------------------------*/
+/* Variables */
+/*--------------------------------------------------------------------------------*/
+
+:root {
+  --white: #fff;
+  --black: #656765;
+  --gray:  #bdc0ba;
+  --sans:  "Avenir next", "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", serif;
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Foundation */
+/*--------------------------------------------------------------------------------*/
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  color: var(--black);
+  font-family: var(--sans);
+  letter-spacing: .32em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+
+p {
+  margin: 0;
+}
+
+input {
+  font-family: var(--sans);
+  letter-spacing: .32em;
+}
+
+
+/*--------------------------------------------------------------------------------*/
+/* Header */
+/*--------------------------------------------------------------------------------*/
+
+.header {
+  position: fixed;
+  top: 32px;
+  left: 16px;
+}
+
+
+/*--------------------------------------------------------------------------------*/
+/* Interval */
+/*--------------------------------------------------------------------------------*/
+
+.idx-Interval {
+  position: fixed;
+  bottom: 88px;
+  left: 24px;
+  z-index: 100;
+  width: 48px;
+  height: 180px;
+  font-size: 11px;
+  letter-spacing: .16em;
+
+  &_Headline,
+  &_Value,
+  &_RangeActive,
+  &_Range {
+    position: absolute;
+    opacity: 0;
+    transition: all .4s;
+  }
+
+  &_Headline {
+    bottom: 0;
+    left: 40px;
+  }
+
+  &_Value {
+    bottom: 50%;
+    left: 40px;
+    margin: 0 0 7px;
+  }
+
+  &_RangeActive {
+    bottom: 23px;
+    left: 50%;
+    z-index: 1;
+    width: 80px;
+    height: 2px;
+    background: var(--black);
+    transform: rotate(-90deg);
+    transform-origin: left;
+  }
+
+  &_Range {
+    bottom: 23px;
+    left: 50%;
+    z-index: 0;
+    width: 160px;
+    height: 2px;
+    margin: 0;
+  	background: var(--gray);
+    transform: rotate(-90deg);
+    transform-origin: left;
+  	appearance: none;
+    &:focus {
+      outline: none;
+    }
+    &::-webkit-slider-thumb {
+      width: 8px;
+      height: 8px;
+      margin: 0 0 0 2px;
+      box-sizing: border-box;
+      background: var(--black);
+      border-radius: 20px;
+      appearance: none;
+      cursor: pointer;
+    }
+  }
+
+  &_Btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    line-height: 0;
+    transform: translate(-50%,0);
+  }
+
+  &:hover {
+    .idx-Interval_Headline,
+    .idx-Interval_Value,
+    .idx-Interval_RangeActive,
+    .idx-Interval_Range {
+      opacity: 1;
+    }
+  }
+}
+
+
+/*--------------------------------------------------------------------------------*/
+/* Loadstatus */
+/*--------------------------------------------------------------------------------*/
+
+.idx-LoadStatus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate3d(-50%,-50%,0);
+}
+
+
+/*--------------------------------------------------------------------------------*/
+/* Overlay */
+/*--------------------------------------------------------------------------------*/
+
+.idx-Overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,.9);
+
+  &_Input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 480px;
+    border: none;
+    height: 48px;
+    border-bottom: 1px solid var(--black);
+    background: none;
+    font-size: 18px;
+    transform: translate3d(-50%,-50%,0);
+    outline: none;
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px #fff inset;
+    }
+  }
+
+  &_Submit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -10px 0 0 220px;
+    border: none;
+    background: url(./img/icn-search.png) no-repeat;
+    background-size: 100%;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &_Btn {
+    position: fixed;
+    z-index: 1000;
+    bottom: 24px;
+    left: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #f0f1ef;
+    box-sizing: border-box;
+    background: var(--white);
+    cursor: pointer;
+    transition: .3s;
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 22px;
+      left: 15px;
+      width: 16px;
+      height: 2px;
+      background: var(--black);
+      transition: .3s;
+    }
+    &:after {
+      transform: rotate(90deg);
+    }
+    &:hover {
+      border-color: transparent;
+      box-shadow: 0 4px 16px 0 rgba(0,0,0,.08);
+    }
+    &.is-opened {
+      border-color: transparent;
+      box-shadow: none;
+      &:before {transform: rotate(225deg);}
+      &:after {transform: rotate(135deg);}
+      &:hover {
+        &:before {transform: rotate(315deg);}
+        &:after {transform: rotate(405deg);}
+      }
+    }
+  }
+}
+
+
+/*--------------------------------------------------------------------------------*/
+/* Overlay */
+/*--------------------------------------------------------------------------------*/
+
+.pins {
+  position: fixed;
+  z-index: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100% - 96px);
+  transform: translate3d(-50%,-50%,0);
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Ambient || Pinterest Slide Show</title>
+  <link rel="stylesheet" href="/bundle.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <!-- <h1 class="title"><img src="./img/logo.png" alt="One Tone" width="143" height="97"></h1> -->
+  </header>
+  <section class="interface">
+    <section class="idx-Interval" id="interval">
+      <h3 class="idx-Interval_Headline">Interval</h3>
+      <p class="idx-Interval_Value" id="rangeValue">5500ms</p>
+      <div class="idx-Interval_RangeActive" id="rangeActive"></div>
+      <input type="range" step="500" min="1000" max="10000" value="5500" class="idx-Interval_Range" id="range">
+      <p class="idx-Interval_Btn"><img src="./img/icn-interval.png" alt="" width="13" height="16"></p>
+    </section>
+    <p class="idx-Overlay_Btn" id="open"></p>
+  </section>
+  <section class="idx-Overlay" id="overlay">
+    <input type="text" placeholder="<userName>/<boardName>" autocomplete="on" class="idx-Overlay_Input" id="input">
+    <button class="idx-Overlay_Submit" id="submit"></button>
+  </section>
+  <section class="load">
+    <p class="idx-LoadStatus" id="loadStatus">0%</p>
+  </section>
+  <section class="pins" id="pins"></section>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="/lib/TweenLite.min.js"></script>
+  <script src="/lib/CSSPlugin.min.js"></script>
+  <script src="/bundle.js"></script>
+</body>
+</html>
